@@ -9,6 +9,7 @@ namespace AMMA202409018.DTOs.ProductsDTOs
 {
     public class CreateProductAMMADTO
     {
+
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El campo Nombre es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El campo Nombre no puede tener más de 50 caracteres.")]

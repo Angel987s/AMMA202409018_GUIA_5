@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AMMA202409018.DTOs\AMMA202409018.DTOs.csproj" />
   </ItemGroup>
 

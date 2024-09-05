@@ -27,7 +27,12 @@ namespace AMMA202409018.DTOs.ProductsDTOs
         [Range(0, double.MaxValue, ErrorMessage = "El campo Precio debe ser un número positivo.")]
         public decimal PrecioAMMA { get; set; }
 
-        public EditProductAMMADTO() { }
+        public EditProductAMMADTO() {
+            NombreAMMA = string.Empty;
+            DescripcionAMMA = string.Empty;
+            PrecioAMMA = 0.01m; 
+
+        }
 
         public EditProductAMMADTO(GetIdResultProductAMMADTO getIdResultProductAMMADTO)
         {
