@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AMMA202409018.DTOs\AMMA202409018.DTOs.csproj" />
   </ItemGroup>
 
