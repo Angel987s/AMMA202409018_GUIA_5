@@ -1,0 +1,14 @@
+﻿CREATE DATABASE dbAMMA202409018
+GO
+
+-- Utilizar la base de datos CRMDB
+USE dbAMMA202409018
+GO
+
+
+CREATE TABLE Products (
+    Id INT PRIMARY KEY,
+    NombreAMMA NVARCHAR(100) NOT NULL,
+    DescripcionAMMA NVARCHAR(MAX),
+    PrecioAMMA DECIMAL(18,2) NOT NULL
+);
