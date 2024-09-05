@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMMA202409018.API", "AMMA202409018.API\AMMA202409018.API.csproj", "{08CB2774-FB69-42E7-848B-CEB018F075D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08CB2774-FB69-42E7-848B-CEB018F075D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CB2774-FB69-42E7-848B-CEB018F075D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CB2774-FB69-42E7-848B-CEB018F075D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CB2774-FB69-42E7-848B-CEB018F075D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB7EBF40-EC50-4AE8-B8FA-B2A572959117}
+	EndGlobalSection
+EndGlobal
