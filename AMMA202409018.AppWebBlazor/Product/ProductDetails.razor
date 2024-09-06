@@ -1,0 +1,49 @@
+﻿@page "/product-details/{Id:int}"
+
+@using AMMA202409018.DTOs.ProductsDTOs;
+@using Microsoft.AspNetCore.Components.Forms;
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Components;
+@using AMMA202409018.API.Services;  // Assuming ProductAMMAService here
+
+<h3>Ver Producto</h3>
+<div class="row">
+    <div class="col-4">
+        <div class="form-group">
+            <label for="Name">Nombre:</label>
+            <input type="text" class="form-control" disabled @bind="product.NombreAMMA" />
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="Descripcion">Descripción:</label>
+            <textarea disabled class="form-control" @bind="product.DescripcionAMMA"></textarea>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label for="Precio">Precio:</label>
+            <input type="text" class="form-control" disabled @bind="product.PrecioAMMA" />  </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <NavLink href="/product-list" class="btn btn-primary">Ir a buscar productos</NavLink>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    [Inject]
+    ProductAMMAService productService { get; set; }
+
+    GetIdResultProductAMMADTO product = new GetIdResultProductAMMADTO();
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await productService.GetById(Id);
+    }
+}

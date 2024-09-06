@@ -1,0 +1,102 @@
+﻿@page "/create-product"
+
+@using AMMA202409018.DTOs.ProductsDTOs;
+@using Microsoft.AspNetCore.Components.Forms;
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Components;
+@using AMMA202409018.API.Services;
+
+@if (isSuccess == false && isError == false)
+{
+    <h3>Crear Nuevo Producto</h3>
+
+    <EditForm Model="product" OnValidSubmit="Create">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Name">Nombre:</label>
+                    <InputText class="form-control" id="Name" @bind-Value="product.NombreAMMA" />
+                    <ValidationMessage For="() => product.NombreAMMA" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Descripcion">Descripción:</label>
+                    <InputTextArea class="form-control" id="Descripcion" @bind-Value="product.DescripcionAMMA" />
+                    <ValidationMessage For="() => product.DescripcionAMMA" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="Precio">Precio:</label>
+                    <InputNumber class="form-control" id="Precio" @bind-Value="product.PrecioAMMA" />
+                    <ValidationMessage For="() => product.PrecioAMMA" />
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <NavLink href="/product-list" class="btn btn-secondary">Cancelar</NavLink>
+            </div>
+        </div>
+    </EditForm>
+}
+else if (isError)
+{
+    product = new CreateProductAMMADTO();
+    isError = false;
+    <p class="alert alert-success">Producto creado con éxito.</p>
+    <button type="button" @onclick="GoCreate" class="btn btn-primary">Ir a crear</button>
+    <NavLink href="/product-list" class="btn btn-primary">Ir a buscar productos</NavLink>
+}
+else if (isSuccess)
+{
+    <p class="alert alert-danger">Ocurrió un error al intentar registrar el producto.</p>
+    <NavLink href="/product-list" class="btn btn-primary">Aceptar</NavLink>
+}
+
+@code {
+    // Inject the ProductService to interact with product data
+    [Inject]
+    ProductAMMAService productService { get; set; }
+
+    // Create an instance of CreateProductAMMADTO for new product creation
+    CreateProductAMMADTO product = new CreateProductAMMADTO();
+    bool isSuccess = false;  // Flag for successful creation
+    bool isError = false;   // Flag for creation errors
+
+    private async Task Create()
+    {
+        try
+        {
+            var result = await productService.Create(product);
+            Console.WriteLine($"Result from Create: {result}"); // Depuración
+            if (result > 0)  // Considera el resultado positivo para éxito
+            {
+                isSuccess = true;
+            }
+            else
+            {
+                isError = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejo de excepciones para detectar problemas inesperados
+            Console.WriteLine($"Exception: {ex.Message}");
+            isError = true;
+        }
+    }
+
+
+    private void GoCreate()
+    {
+        isSuccess = false;  // Reset isSuccess for new creation
+        isError = false;   // Reset isError for clean state
+    }
+}
